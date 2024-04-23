@@ -2,7 +2,7 @@ import LogoHero from "./components/LogoHero";
 import ContentImageSection from "./components/ContentImageSection";
 import ImageContentSection from "./components/ImageContentSection";
 import CarouselImageList from "./components/CarouselImageList";
-
+import CarouselSpotifyAlbums from "./components/CarouselSpotifyAlbums";
 
 export default function Home() {
   return (
@@ -21,6 +21,9 @@ export default function Home() {
         <CarouselImageList/>
 
         <ImageContentSection/>  
+
+        <CarouselSpotifyAlbums/>
+
 
       </div>
     </main>   

@@ -23,6 +23,7 @@ export default function ContentImageSection(){
             alt="Daruma Image article"
             width={600}
             quality={100}
+            priority={true}
           />
         </div>
         
