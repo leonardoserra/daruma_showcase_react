@@ -5,7 +5,7 @@ export default function LogoHero(){
 
 
     return (
-        <section className="mt-20 mb-40 m-auto">
+        <section className="mt-32 mb-40 m-auto">
             <div className="m-auto w-[700px] h-[700px]">
                 <Image 
                     alt="Logo Hero" 
