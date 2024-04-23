@@ -1,7 +1,7 @@
 import LogoHero from "./components/LogoHero";
 import ContentImageSection from "./components/ContentImageSection";
 import ImageContentSection from "./components/ImageContentSection";
-import Carousel from "./components/Carousel";
+import CarouselImageList from "./components/CarouselImageList";
 
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
         <ContentImageSection/>  
 
         {/* Still not a carousel */}
-        <Carousel/>
+        <CarouselImageList/>
 
         <ImageContentSection/>  
 
