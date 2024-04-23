@@ -1,8 +1,8 @@
 export default function Home() {
   return (
     <main>
-      <div>
-        HOMEPAGE DARUMA VETRINA
+      <div className="mt-12 text-center">
+       HOME PAGE CONTENT
       </div>
     </main>   
   );

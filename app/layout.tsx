@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Rubik_Bubbles, Reenie_Beanie, Ruluko } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik_bubbles = Rubik_Bubbles({subsets: ["latin"], weight:"400"});
+const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight:"400"});
+const ruluko = Ruluko({subsets: ["latin"], weight: "400"});
+
+//to use the font class  className={rubik_bubbles.className}
 
 export const metadata: Metadata = {
   title: "Daruma.io",
@@ -16,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      
+      <body className={`${ruluko.className} text-primaryBlack`}>
+        <Header></Header>
+        {children}
+      </body>
     </html>
   );
 }
