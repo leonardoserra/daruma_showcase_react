@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik_Bubbles, Reenie_Beanie, Ruluko } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const rubik_bubbles = Rubik_Bubbles({subsets: ["latin"], weight:"400"});
 const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight:"400"});
@@ -23,8 +24,9 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={`${ruluko.className} text-primaryBlack`}>
-        <Header></Header>
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

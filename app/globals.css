@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-header{
-    @apply text-center
+
+header {
+  @apply text-center
+}
+
+.border-debug {
+  border: solid red 1px
+}
+
+.main-btn{
+  padding: 10px 30px;
+  font-weight: 800;
+  border-radius: 50px 5px 50px 5px;
+  @apply bg-redDarumaColor;
 }

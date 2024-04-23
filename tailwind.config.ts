@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors:{
         primaryBlack: "#342F2F",
+        redDarumaColor: "#ff2126"
       }
     },
   },
