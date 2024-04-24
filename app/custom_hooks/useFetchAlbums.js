@@ -5,11 +5,14 @@ const useFetchAlbums = () =>{
   const {token} = useFetchApiToken()
 
   const id = process.env.NEXT_PUBLIC_ARTIST_ID
+  const offset = process.env.NEXT_PUBLIC_OFFSET
+  const limit = process.env.NEXT_PUBLIC_LIMIT
+  const groups = process.env.NEXT_PUBLIC_GROUPS
   const [albums, setAlbums] = useState(null)
   const [albumError, setAlbumError] = useState(null)
 
   useEffect(()=>{
-    fetch(`https://api.spotify.com/v1/artists/${id}/albums`,{
+    fetch(`https://api.spotify.com/v1/artists/${id}/albums?${groups}&${limit}&${offset}`,{
       headers: {'Authorization': `Bearer ${token}`}
     })
     .then(res=>{
@@ -22,8 +25,7 @@ const useFetchAlbums = () =>{
       setAlbumError(e)
     })
 
-  },[])
-
+  },[token])
   return albums
 }
 

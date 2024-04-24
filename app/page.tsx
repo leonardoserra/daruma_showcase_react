@@ -18,11 +18,14 @@ export default function Home() {
         <ContentImageSection/>  
 
         {/* Still not a carousel */}
-        <CarouselImageList/>
+        <div className="horizontal-scroll">
+          <CarouselImageList/>
+        </div>
 
         <ImageContentSection/>  
-
-        <CarouselSpotifyAlbums/>
+        <div className="horizontal-scroll">
+          <CarouselSpotifyAlbums/>
+        </div>
 
 
       </div>

@@ -1,33 +1,18 @@
 "use client"
 
 import Image from "next/image"
+import { imageList } from '../utils/imageList'
 
-const carouselFolder = '/carousel_imgs/'
-
-const imageList = [
-  {
-    name:'carousel_image',
-    path: carouselFolder + 'carosello_3.jpg'
-  },
-  {
-    name:'carousel_image',
-    path: carouselFolder + 'carosello_1.jpg'
-  },
-  {
-    name:'carousel_image',
-    path: carouselFolder + 'carosello_2.jpg'
-  },
-]
 export default function CarouselImageList(){
 
 
   return (
     <section>
-      <div className="wrapper h-[400px]">
-        <div className="w-[100%] relative flex gap-3">
+      <div className="wrapper h-[400px] w-[300rem]">
+        <div className="w-[100%] relative flex justyfy-around gap-3">
           {imageList.map((image) => {
             return (
-              <div key={image.path} className="w-1/3 h-[400px] mx-3 z-10">
+              <div key={image.path} className="w-[600] h-[400px] mx-3 z-10">
                 <Image className="carousel-image  rounded-lg" src={image.path} alt={image.name} width={400} height={300} />
               </div>
             )
