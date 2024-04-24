@@ -1,13 +1,16 @@
 "use client"
 
-import Image from "next/image"
 import useFetchAlbums from '@/app/custom_hooks/useFetchAlbums'
-import { useState } from "react"
+import gsap from "gsap";
+import { useGSAP,Draggable,InertiaPlugin } from "@gsap/react";
+gsap.registerPlugin(Draggable, InertiaPlugin);
 
-
-export default function CarouselSpotifyAlbums(){
+export default function SpotifyAlbumsList(){
   
   const albums = useFetchAlbums()
+  useGSAP(() => {
+    gsap.to('section', { inertia: { x: 500 } });
+  });
 
   return (
     
@@ -20,7 +23,7 @@ export default function CarouselSpotifyAlbums(){
           {/* Album Card */}
           {albums.map((album) => {
             return (
-              <div className="w-[400px] h-[400px] mx-3 z-10 " key={album.name}>
+              <div className="album-card w-[400px] h-[400px] mx-3 z-10 " key={album.name}>
                 <a className="w-[400px] h-[400px]" href={album.external_urls.spotify ?? '#'} target="_blank">
                   <img className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name}/>
                 </a>

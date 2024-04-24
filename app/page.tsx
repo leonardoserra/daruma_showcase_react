@@ -1,8 +1,8 @@
 import LogoHero from "./components/LogoHero";
 import ContentImageSection from "./components/ContentImageSection";
 import ImageContentSection from "./components/ImageContentSection";
-import CarouselImageList from "./components/CarouselImageList";
-import CarouselSpotifyAlbums from "./components/CarouselSpotifyAlbums";
+import ImagesList from "./components/ImagesList";
+import SpotifyAlbumsList from "./components/SpotifyAlbumsList";
 
 export default function Home() {
   return (
@@ -14,9 +14,9 @@ export default function Home() {
       </div>
         <LogoHero/>
         <ContentImageSection/>  
-        <CarouselImageList/>{/* Still not a carousel */}
+        <ImagesList/>{/* Still not a carousel */}
         <ImageContentSection/> 
-        <CarouselSpotifyAlbums/>
+        <SpotifyAlbumsList/>
       </div>
     </main>   
   );

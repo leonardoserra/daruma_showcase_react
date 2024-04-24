@@ -1,9 +1,9 @@
 import Image from "next/image";
 import ArticleImage from "@/public/section_1_img.png";
 import { Rubik_Bubbles } from "next/font/google";
+
 const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400" });
-import gsap from 'gsap';
-import {useGSAP} from '@gsap/react'
+
 export default function ContentImageSection(){
 
   return(

@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { imageList } from '../utils/imageList'
 
-export default function CarouselImageList(){
+export default function ImagesList(){
 
 
   return (
