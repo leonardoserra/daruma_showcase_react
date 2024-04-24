@@ -7,7 +7,7 @@ export default function CarouselImageList(){
 
 
   return (
-    <section>
+    <section className="horizontal-scroll">
       <div className="wrapper h-[400px] w-[300rem]">
         <div className="w-[100%] relative flex justyfy-around gap-3">
           {imageList.map((image) => {

@@ -12,22 +12,11 @@ export default function Home() {
         <div className="cursor cursor--large"></div>
         <div className="cursor cursor--small"></div>
       </div>
-
         <LogoHero/>
-
         <ContentImageSection/>  
-
-        {/* Still not a carousel */}
-        <div className="horizontal-scroll">
-          <CarouselImageList/>
-        </div>
-
-        <ImageContentSection/>  
-        <div className="horizontal-scroll">
-          <CarouselSpotifyAlbums/>
-        </div>
-
-
+        <CarouselImageList/>{/* Still not a carousel */}
+        <ImageContentSection/> 
+        <CarouselSpotifyAlbums/>
       </div>
     </main>   
   );

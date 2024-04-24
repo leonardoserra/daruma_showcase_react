@@ -11,7 +11,8 @@ export default function CarouselSpotifyAlbums(){
 
   return (
     
-    albums &&  ( <section>
+    albums &&  ( 
+    <section className="horizontal-scroll">
       
       <div className="wrapper h-[400px] w-[1200rem]">
        
