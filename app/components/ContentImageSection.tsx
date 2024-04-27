@@ -1,10 +1,29 @@
+"use client"
+
 import Image from "next/image";
 import ArticleImage from "@/public/section_1_img.png";
 import { Rubik_Bubbles } from "next/font/google";
+import gsap from 'gsap'
+import {useGSAP} from '@gsap/react'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger, useGSAP) 
 
 const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400" });
-
 export default function ContentImageSection(){
+
+  
+  useGSAP(()=>{
+    gsap.from('#article-image-1', {
+      duration:2,
+      scrollTrigger:{ 
+        trigger:'#article-image-1',
+        start: 'top bottom',
+        end: 'center center',
+      }, 
+      x: 500,
+      ease: 'power1.inOut'
+    })
+  })
 
   return(
     <section className="w-100 my-52">
@@ -17,9 +36,10 @@ export default function ContentImageSection(){
           </p>
         </div>
 
-        <div className="w-[50%] article-image">
+        <div className="w-[50%] article-image" id="article-image-1">
           <Image
-            className="mx-auto"
+            
+            className="mx-auto image-1"
             src={ArticleImage} 
             alt="Daruma Image article"
             width={600}

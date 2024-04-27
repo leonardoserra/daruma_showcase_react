@@ -16,7 +16,7 @@ export default function Home() {
         <ContentImageSection/>  
         <ImagesList/>{/* Still not a carousel */}
         <ImageContentSection/> 
-        <SpotifyAlbumsList/>
+        <SpotifyAlbumsList  />
       </div>
     </main>   
   );

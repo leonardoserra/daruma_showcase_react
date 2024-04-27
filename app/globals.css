@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  overflow-x: hidden;
+}
 header {
   @apply text-center
 }
@@ -22,6 +24,15 @@ header {
   @apply bg-redDarumaColor;
 }
 
+.album-card{
+  opacity: 0;
+  transform: translateY(-30);
+  z-index: 20;
+}
+
+.album-card :hover{
+  transform:rotate(3deg);
+}
 
 .carousel-image{
   object-fit: cover;
@@ -31,7 +42,7 @@ header {
 
 .horizontal-scroll {
   margin: 4px, 4px;
-  padding: 4px;
+  padding: 16px 0;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;

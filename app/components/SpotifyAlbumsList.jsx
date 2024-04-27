@@ -1,30 +1,43 @@
 "use client"
 
 import useFetchAlbums from '@/app/custom_hooks/useFetchAlbums'
+
+//GSAP
 import gsap from "gsap";
-import { useGSAP,Draggable,InertiaPlugin } from "@gsap/react";
-gsap.registerPlugin(Draggable, InertiaPlugin);
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(useGSAP, ScrollTrigger) 
 
 export default function SpotifyAlbumsList(){
   
   const albums = useFetchAlbums()
-  useGSAP(() => {
-    gsap.to('section', { inertia: { x: 500 } });
-  });
+
+  gsap.config({
+    nullTargetWarn: false,
+  })
+
+  gsap.to('.album-card', {
+    autoAlpha: 1,
+    y:0,
+    stagger: 0.5,
+    scrollTrigger:{
+      trigger:'#album-list-container',
+    }
+  })
 
   return (
     
     albums &&  ( 
-    <section className="horizontal-scroll">
+    <section id="album-list-container" className="horizontal-scroll">
       
-      <div className="wrapper h-[400px] w-[1200rem]">
+      <div className="draggable-list wrapper h-[400px] w-[1200rem]">
        
-        <div className="w-[100%] relative flex justify-around gap-3 ">
-          {/* Album Card */}
+        <div className="w-[100%] h-[100%] relative flex justify-around gap-3">
+          {/* Album Cards */}
           {albums.map((album) => {
             return (
-              <div className="album-card w-[400px] h-[400px] mx-3 z-10 " key={album.name}>
-                <a className="w-[400px] h-[400px]" href={album.external_urls.spotify ?? '#'} target="_blank">
+              <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
+                <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
                   <img className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name}/>
                 </a>
               </div>
