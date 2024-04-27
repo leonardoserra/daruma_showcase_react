@@ -8,10 +8,9 @@ import {useGSAP} from '@gsap/react'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger, useGSAP) 
 
-const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400" });
+const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
 export default function ContentImageSection(){
 
-  
   useGSAP(()=>{
     gsap.from('#article-image-1', {
       duration:2,

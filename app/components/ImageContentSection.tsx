@@ -3,13 +3,13 @@
 import Image from "next/image";
 import ArticleImage from "@/public/section_2_img.png";
 import { Rubik_Bubbles } from "next/font/google";
-const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400" });
+const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
 
 //GSAP
 import gsap from 'gsap'
-import  {useGSAP} from '@gsap/react'
+import  { useGSAP } from '@gsap/react'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-gsap.registerPlugin(useGSAP,ScrollTrigger) 
+gsap.registerPlugin(useGSAP, ScrollTrigger) 
 
 
 export default function ImageContentSection(){

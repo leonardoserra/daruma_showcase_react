@@ -1,13 +1,13 @@
 import { Reenie_Beanie, Rubik_Bubbles } from "next/font/google";
-const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight: "400" });
-const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400" });
+const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight: "400", display:"swap" });
+const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
 
 export default function Footer() {
   return (
     <footer className={reenie_beanie.className +"mt-16 w-100 h-[480px] py-16 px-40  bg-primaryBlack"}>
       <div className="w-[300px] mx-auto text-white">
 
-        <div className="mb-6 text-center">contacts</div>
+        <div className={rubik_bubbles.className +"mb-6 text-center"}>contacts</div>
 
         <div className="flex justify-between mb-20">
           <ul className="flex flex-col justify-between">

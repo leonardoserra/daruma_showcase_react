@@ -15,14 +15,38 @@ export default function SpotifyAlbumsList(){
   gsap.config({
     nullTargetWarn: false,
   })
+  
+  document.querySelectorAll('.album-card').forEach(function(card, index){
+    gsap.to(card, {
+      autoAlpha: 1,
+      y:0,
+      delay:index - (0.66 * index),
+      scrollTrigger:{
+        trigger:"#album-list-container",
+      }
+    })
+  })
 
-  gsap.to('.album-card', {
-    autoAlpha: 1,
-    y:0,
-    stagger: 0.5,
-    scrollTrigger:{
-      trigger:'#album-list-container',
-    }
+  //adding rotation when mouseover
+  document.querySelectorAll('.album-card').forEach(card=>{
+    card.addEventListener('mouseover', function(){
+      gsap.to(this, {
+        duration:0.2,
+        rotate:4,
+        scale:1.1
+      })
+    })
+  })
+
+  //delete rotation rotation when mouseout
+  document.querySelectorAll('.album-card').forEach(card=>{
+    card.addEventListener('mouseout', function(){
+      gsap.to(this, {
+        duration:0.4,
+        rotate:0,
+        scale:1
+      })
+    })
   })
 
   return (
