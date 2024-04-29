@@ -10,7 +10,24 @@ gsap.registerPlugin(useGSAP);
 export default function LogoHero() {
   
   useGSAP(() => {
-    gsap.to(".logo-container", {y: -80,  ease: "bounce.in", duration:3});
+    const tl = gsap.timeline()
+    tl.to(".logo-container", {y: -80,  ease: "bounce.in", duration:3});
+    tl.to(".logo-container",{ y:-50, duration:3, yoyo: true, repeat:-1,  ease: "power1.inOut"})
+    tl.to(".logo-container",{ x:-6, duration:1.88, yoyo: true, repeat:-1,  ease: "power1.inOut"}, "<")
+
+    const logo = document.getElementById('logo-image')
+
+    logo?.addEventListener('mouseover',function(){
+      gsap.to(this,{
+        scale:1.2
+      })
+    })
+
+    logo?.addEventListener('mouseout',function(){
+      gsap.to(this,{
+        scale:1
+      })
+    })
   });
 
 

@@ -21,20 +21,9 @@ export default function ContentImageSection(){
       }
     })
 
-    tl.from('#article-image-1', {
-      duration:2,
-      x: 500,
-      ease: 'power1.out'
-    })
-    
-    tl.to('#article-image-1',{
-      duration:2,
-      x: -5,
-      y:-10,
-      yoyo:true,
-      repeat:-1,
-      ease: 'power1.inOut',
-    }, ">")
+    tl.from('#article-image-1', { duration:2, x: 500, ease: 'power1.out'})
+    tl.to('#article-image-1',{  duration:2, y:-10, yoyo:true, repeat:-1,ease: 'power1.inOut', }, ">")
+    tl.to('#article-image-1',{  duration:3, x: -5, yoyo:true, repeat:-1,ease: 'power1.inOut', }, "<")
    
   })
 

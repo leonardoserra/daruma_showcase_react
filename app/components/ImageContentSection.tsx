@@ -24,20 +24,10 @@ export default function ImageContentSection(){
       }
     })
    
-    tl.from("#article-image-2", {
-      duration:2,
-      x: -500,
-      ease: 'power1.out',
-    })
+    tl.from("#article-image-2", { duration:2, x: -500, ease: 'power1.out', })
+    tl.to('#article-image-2',{  duration:2, y:-10, yoyo:true, repeat:-1,ease: 'power1.inOut', }, ">")
+    tl.to('#article-image-2',{  duration:3, x: -5, yoyo:true, repeat:-1,ease: 'power1.inOut', }, "<")
 
-    tl.to('#article-image-2',{
-      duration:2,
-      x: -5,
-      y:-10,
-      yoyo:true,
-      repeat:-1,
-      ease: 'power1.inOut',
-    }, ">")
    
   })
   return(
