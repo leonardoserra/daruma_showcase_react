@@ -34,7 +34,7 @@ export default function LogoHero() {
   return (
     <section id="logo-section" className="mt-32 mb-40 m-auto">
       <div className="m-auto w-[700px] h-[700px] logo-container">
-        <a href="https://linktr.ee/Daruma" target="_blank" rel="noopener noreferrer">
+        <a href="https://open.spotify.com/artist/6zUJZaqND4ZduOsIXRH8Sb" target="_blank" rel="noopener noreferrer">
           <Image
             id="logo-image"
             alt="Logo Hero"
