@@ -3,6 +3,7 @@ const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight: "400", display
 const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
 
 export default function Footer() {
+
   return (
     <footer className={reenie_beanie.className +"mt-16 w-100 h-[480px] py-16 px-40  bg-primaryBlack"}>
       <div className="w-[300px] mx-auto text-white">
@@ -33,7 +34,11 @@ export default function Footer() {
         </div>
 
       </div>
-        <div className="text-right  text-white">Made by My Self &nbsp; <span className="text-redDarumaColor">&hearts;</span></div>
+      <div className="text-right  text-white">Made by My Self &nbsp; <span className="text-redDarumaColor">&hearts;</span></div>
+
+      <audio id="audio" className="m-auto" controls loop>
+        <source   src="/audio/abec_7.wav" type="audio/wav"></source>
+      </audio>
     </footer>
   )
 }
