@@ -14,17 +14,16 @@ const useFetchApiToken = () =>{
   useEffect( ()=>{
     setTimeout(()=>{
       fetch(tokenUrl, {
-        method:"POST",
-        headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams( {
+      method:"POST",
+      headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams( {
           grant_type: grant_type,
           client_id: id,
           client_secret: secret
         }).toString()
-      })
-      .then(res =>{
-        if( !res.ok ) throw new Error("Problemi con il caricamento token")
-        
+      }).then(res =>{
+        if( !res.ok ) 
+          throw new Error("Problemi con il caricamento token")
         return res.json()
       }).then(res=>{
         setToken(res.access_token)
@@ -32,7 +31,7 @@ const useFetchApiToken = () =>{
       .catch(e =>{
         setError(e)
       })
-    }, 1000)
+    }, 500)
     
 
   },[])

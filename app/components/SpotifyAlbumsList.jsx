@@ -1,34 +1,41 @@
 "use client"
 
 import useFetchAlbums from '@/app/custom_hooks/useFetchAlbums'
+import { Suspense } from 'react';
 
 //GSAP
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(useGSAP, ScrollTrigger) 
+import { Draggable } from 'gsap/Draggable';
+gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable) 
 
 export default function SpotifyAlbumsList(){
   
   const albums = useFetchAlbums()
-
+  
   gsap.config({
     nullTargetWarn: false,
   })
+
+  Draggable.create(".draggable-album-list", {
+    type: "x",
+    bounds: "#album-list-container"
+  });
+
+
+  const cards = document.querySelectorAll('.album-card')
   
-  document.querySelectorAll('.album-card').forEach(function(card, index){
+  cards.forEach(function(card, index){
     gsap.to(card, {
       autoAlpha: 1,
       y:0,
-      delay:index - (0.66 * index),
+      delay: index - (0.66 * index),
       scrollTrigger:{
         trigger:"#album-list-container",
       }
     })
-  })
 
-  //adding rotation when mouseover
-  document.querySelectorAll('.album-card').forEach(card=>{
     card.addEventListener('mouseover', function(){
       gsap.to(this, {
         duration:0.2,
@@ -36,10 +43,7 @@ export default function SpotifyAlbumsList(){
         scale:1.1
       })
     })
-  })
 
-  //delete rotation rotation when mouseout
-  document.querySelectorAll('.album-card').forEach(card=>{
     card.addEventListener('mouseout', function(){
       gsap.to(this, {
         duration:0.4,
@@ -47,16 +51,21 @@ export default function SpotifyAlbumsList(){
         scale:1
       })
     })
-  })
 
+  })
+  
+
+    
+  
   return (
     
     albums &&  ( 
     <section id="album-list-container" className="horizontal-scroll">
       
-      <div className="draggable-list wrapper h-[400px] w-[1200rem]">
+      <div className="draggable-album-list wrapper h-[400px] w-[1200rem]">
        
         <div className="w-[100%] h-[100%] relative flex justify-around gap-3">
+        <Suspense fallback={<div> Caricamento album </div>}>
           {/* Album Cards */}
           {albums.map((album) => {
             return (
@@ -67,6 +76,7 @@ export default function SpotifyAlbumsList(){
               </div>
             )}
           )}
+        </Suspense>
 
          
           {/* banner */}

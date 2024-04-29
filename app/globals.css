@@ -24,7 +24,7 @@ header {
   @apply bg-redDarumaColor;
 }
 
-.album-card{
+.album-card, .carousel-image {
   opacity: 0;
   transform: translateY(-30);
   z-index: 20;
@@ -40,8 +40,9 @@ header {
   height: 600px;
   margin: 4px, 4px;
   padding: 50px 0;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
   scrollbar-width: thin;
+  scroll-behavior:smooth;
 }

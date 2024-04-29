@@ -37,7 +37,6 @@ export default function ContentImageSection(){
 
         <div className="w-[50%] article-image" id="article-image-1">
           <Image
-            
             className="mx-auto image-1"
             src={ArticleImage} 
             alt="Daruma Image article"
