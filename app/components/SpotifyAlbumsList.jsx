@@ -14,11 +14,9 @@ export default function SpotifyAlbumsList(){
 
   const [albums, setAlbums] = useState(null)
 
-  const base_url = process.env.NEXT_PUBLIC_BASE_URL
   useEffect(() => {
-    fetch(`${base_url}/api/albums`,{
-       cache: 'no-store'
-      })
+    const base_url = process.env.NEXT_PUBLIC_BASE_URL
+    fetch(`${base_url}/api/albums`)
       .then((res) => res.json())
       .then((data) => {
         setAlbums(data)
