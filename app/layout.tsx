@@ -5,6 +5,7 @@ import "./globals.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import AudioPlayer from "./components/AudioPlayer";
 
 const ruluko = Ruluko({subsets: ["latin"], weight: "400", display:"swap"});
 
@@ -23,10 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       
-      <body className={`${ruluko.className} text-primaryBlack`}>
+      <body className={`${ruluko.className} text-primaryBlack relative`}>
         <Header/>
         {children}
         <Footer/>
+        <AudioPlayer/>
       </body>
     </html>
   );

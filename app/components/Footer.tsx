@@ -36,9 +36,7 @@ export default function Footer() {
       </div>
       <div className="text-right  text-white">Made by My Self &nbsp; <span className="text-redDarumaColor">&hearts;</span></div>
 
-      <audio id="audio" className="m-auto" controls loop>
-        <source   src="/audio/abec_7.wav" type="audio/wav"></source>
-      </audio>
+      
     </footer>
-  )
+  ) 
 }
