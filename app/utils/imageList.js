@@ -37,7 +37,7 @@ const imageList = [
   },
   {
     name:'carousel_image',
-    path: carouselFolder + 'carosello_2.jpg'
+    path: carouselFolder + 'carosello_2.jpg' 
   },
 ]
 
