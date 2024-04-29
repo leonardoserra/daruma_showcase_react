@@ -12,16 +12,31 @@ const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display
 export default function ContentImageSection(){
 
   useGSAP(()=>{
-    gsap.from('#article-image-1', {
-      duration:2,
+
+    const tl = gsap.timeline({
       scrollTrigger:{ 
-        trigger:'#article-image-1',
+        trigger: "#article-image-1",
         start: 'top bottom',
         end: 'center center',
-      }, 
-      x: 500,
-      ease: 'power1.inOut'
+      }
     })
+    tl.from('#article-image-1', {
+      duration:2,
+      x: 500,
+      ease: 'power1.out'
+    })
+
+    
+    tl.to('#article-image-1',{
+      duration:2,
+      x: -5,
+      y:-10,
+      yoyo:true,
+      repeat:-1,
+      ease: 'power1.inOut',
+    }, ">")
+
+   
   })
 
   return(
