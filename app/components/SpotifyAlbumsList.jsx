@@ -16,7 +16,7 @@ export default function SpotifyAlbumsList(){
 
   const base_url = process.env.NEXT_PUBLIC_BASE_URL
   useEffect(() => {
-    fetch(`${base_url}/api/albums`)
+    fetch(`${base_url}/api/albums`,{ cache: 'no-store'} )
       .then((res) => res.json())
       .then((data) => {
         setAlbums(data)
@@ -74,7 +74,7 @@ export default function SpotifyAlbumsList(){
             return (
               <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
                 <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
-                  <Image loader={() => album.images[1].url + '?w=400&h=400&q=100' } className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
+                  <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=' loader={() => album.images[1].url + '?w=400&h=400&q=100' } className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
                 </a>
               </div>
             )}
