@@ -20,12 +20,12 @@ export default function ContentImageSection(){
         end: 'center center',
       }
     })
+
     tl.from('#article-image-1', {
       duration:2,
       x: 500,
       ease: 'power1.out'
     })
-
     
     tl.to('#article-image-1',{
       duration:2,
@@ -35,7 +35,6 @@ export default function ContentImageSection(){
       repeat:-1,
       ease: 'power1.inOut',
     }, ">")
-
    
   })
 

@@ -15,6 +15,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 export default function ImageContentSection(){
 
   useGSAP(()=>{
+
     const tl = gsap.timeline({
       scrollTrigger:{ 
         trigger: "#article-image-2",
@@ -27,7 +28,6 @@ export default function ImageContentSection(){
       duration:2,
       x: -500,
       ease: 'power1.out',
-      
     })
 
     tl.to('#article-image-2',{
