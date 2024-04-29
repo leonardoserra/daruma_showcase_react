@@ -2,6 +2,7 @@
 
 import { imageList } from '../utils/imageList'
 import { Suspense } from 'react';
+import Image from 'next/image';
 
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react'
@@ -67,7 +68,7 @@ export default function ImagesList(){
             {imageList.map((image, index) => {
               return (
                 <div key={image.path + index} className="single-picture w-[600] h-[400px] mx-3 z-10">
-                  <img className="carousel-image w-[400px] h-[300px] rounded-lg" src={image.path} alt={image.name}/>
+                  <Image  loader={() => image.path + '?w=400&h=300&q=100' } className="carousel-image w-[400px] h-[300px] rounded-lg" src={image.path} alt={image.name} width={400} height={300} quality={100}/>
                 </div>
               )
             })}

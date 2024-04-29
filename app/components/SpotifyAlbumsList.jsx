@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 //GSAP
 import gsap from "gsap";
@@ -26,7 +27,7 @@ export default function SpotifyAlbumsList(){
     nullTargetWarn: false,
   })
 
-  Draggable.create(".draggable-album-list", {
+  Draggable.create("#draggable-album-list", {
     type: "x",
     bounds: "#album-list-container"
   });
@@ -63,17 +64,17 @@ export default function SpotifyAlbumsList(){
   
   return (
     
-    albums &&  ( 
+   
     <section id="album-list-container" className="horizontal-scroll">
       
-      <div className="draggable-album-list wrapper h-[400px] w-[1200rem]">
+      <div id="draggable-album-list" className=" wrapper h-[400px] w-[1200rem]">
         <div className="w-[100%] h-[100%] relative flex justify-around gap-3">
           {/* Album Cards */}
-          {albums.map((album) => {
+          {albums && albums.map((album) => {
             return (
               <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
                 <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
-                  <img className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name}/>
+                  <Image loader={() => album.images[1].url + '?w=400&h=400&q=100' } className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
                 </a>
               </div>
             )}
@@ -82,6 +83,6 @@ export default function SpotifyAlbumsList(){
           <div className="absolute left-0 top-12 banner w-[100%] h-[305px] bg-primaryBlack z-0"></div>
         </div>
       </div>
-    </section>)
+    </section>
   )
 }
