@@ -37,14 +37,20 @@ export default function ImagesList(){
      card.addEventListener('mouseover', function(){
        gsap.to(this, {
          duration:0.2,
-         scale:1.2,
+         scale:1.3,
+         paddingRight:20,
+         paddingLeft:20,
        })
      })
  
      card.addEventListener('mouseout', function(){
        gsap.to(this, {
          duration:0.4,
-         scale:1
+         scale:1,
+         paddingRight:0,
+         paddingLeft:0,
+
+
        })
      })
  
