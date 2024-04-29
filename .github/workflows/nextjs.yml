@@ -75,15 +75,15 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         env:
-          NEXT_PUBLIC_BASE_URL: ${{ env.NEXT_PUBLIC_BASE_URL }}
-          NEXT_PUBLIC_ARTIST_ID: ${{ env.NEXT_PUBLIC_ARTIST_ID }}
-          NEXT_PUBLIC_TOKEN_URL: ${{ env.NEXT_PUBLIC_TOKEN_URL }}
-          NEXT_PUBLIC_TOKEN_GRANT_TYPE: ${{ env.NEXT_PUBLIC_TOKEN_GRANT_TYPE }}
-          NEXT_PUBLIC_OFFSET: ${{ env.NEXT_PUBLIC_OFFSET }}
-          NEXT_PUBLIC_LIMIT: ${{ env.NEXT_PUBLIC_LIMIT }}
-          NEXT_PUBLIC_GROUPS: ${{ env.NEXT_PUBLIC_GROUPS }}
-          APP_CLIENT_SECRET: ${{ env.APP_CLIENT_SECRET }}
-          APP_CLIENT_ID: ${{ env.APP_CLIENT_ID }}
+          NEXT_PUBLIC_BASE_URL: ${{ vars.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_ARTIST_ID: ${{ vars.NEXT_PUBLIC_ARTIST_ID }}
+          NEXT_PUBLIC_TOKEN_URL: ${{ vars.NEXT_PUBLIC_TOKEN_URL }}
+          NEXT_PUBLIC_TOKEN_GRANT_TYPE: ${{ vars.NEXT_PUBLIC_TOKEN_GRANT_TYPE }}
+          NEXT_PUBLIC_OFFSET: ${{ vars.NEXT_PUBLIC_OFFSET }}
+          NEXT_PUBLIC_LIMIT: ${{ vars.NEXT_PUBLIC_LIMIT }}
+          NEXT_PUBLIC_GROUPS: ${{ vars.NEXT_PUBLIC_GROUPS }}
+          APP_CLIENT_SECRET: ${{ secrets.APP_CLIENT_SECRET }}
+          APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
