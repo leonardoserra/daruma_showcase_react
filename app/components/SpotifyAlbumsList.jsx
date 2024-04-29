@@ -1,7 +1,6 @@
 "use client"
 
-import useFetchAlbums from '@/app/custom_hooks/useFetchAlbums'
-import { Suspense } from 'react';
+import { useEffect, useState } from 'react';
 
 //GSAP
 import gsap from "gsap";
@@ -11,9 +10,18 @@ import { Draggable } from 'gsap/Draggable';
 gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable) 
 
 export default function SpotifyAlbumsList(){
-  
-  const albums = useFetchAlbums()
-  
+
+  const [albums, setAlbums] = useState(null)
+
+  const base_url = process.env.NEXT_PUBLIC_BASE_URL
+  useEffect(() => {
+    fetch(`${base_url}/api/albums`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbums(data)
+      })
+  }, [])
+
   gsap.config({
     nullTargetWarn: false,
   })
@@ -23,10 +31,9 @@ export default function SpotifyAlbumsList(){
     bounds: "#album-list-container"
   });
 
-
   const cards = document.querySelectorAll('.album-card')
-  
-  cards.forEach(function(card, index){
+
+  cards.forEach((card, index)=>{
     gsap.to(card, {
       autoAlpha: 1,
       y:0,
@@ -54,18 +61,13 @@ export default function SpotifyAlbumsList(){
 
   })
   
-
-    
-  
   return (
     
     albums &&  ( 
     <section id="album-list-container" className="horizontal-scroll">
       
       <div className="draggable-album-list wrapper h-[400px] w-[1200rem]">
-       
         <div className="w-[100%] h-[100%] relative flex justify-around gap-3">
-        <Suspense fallback={<div> Caricamento album </div>}>
           {/* Album Cards */}
           {albums.map((album) => {
             return (
@@ -76,9 +78,6 @@ export default function SpotifyAlbumsList(){
               </div>
             )}
           )}
-        </Suspense>
-
-         
           {/* banner */}
           <div className="absolute left-0 top-12 banner w-[100%] h-[305px] bg-primaryBlack z-0"></div>
         </div>

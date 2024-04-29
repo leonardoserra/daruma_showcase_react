@@ -16,13 +16,7 @@ export default function ImageContentSection(){
 
   useGSAP(()=>{
 
-    const tl = gsap.timeline({
-      scrollTrigger:{ 
-        trigger: "#article-image-2",
-        start: 'top bottom',
-        end: 'center center',
-      }
-    })
+    const tl = gsap.timeline({ scrollTrigger:{ trigger: "#article-image-2", start: 'top bottom', end: 'center center',} })
    
     tl.from("#article-image-2", { duration:2, x: -500, ease: 'power1.out', })
     tl.to('#article-image-2',{  duration:2, y:-10, yoyo:true, repeat:-1,ease: 'power1.inOut', }, ">")

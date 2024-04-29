@@ -21,11 +21,13 @@ const useFetchAlbums = () =>{
       return res.json()
     }).then(res=>{
       setAlbums(res.items)
+      
     }).catch(e=>{
       setAlbumError(e)
     })
 
   },[token])
+
   return albums
 }
 
