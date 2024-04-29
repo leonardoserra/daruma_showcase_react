@@ -15,7 +15,6 @@ export async function GET(){
 
 
   const resAlbums = await fetch(`https://api.spotify.com/v1/artists/${id}/albums?${groups}&${limit}&${offset}`,{
-    cache: 'no-store',
     method:"GET",  
     headers: {'Authorization': `Bearer ${token}`}
   })
