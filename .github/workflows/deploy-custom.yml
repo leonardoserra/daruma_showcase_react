@@ -85,11 +85,12 @@ jobs:
           NEXT_PUBLIC_GROUPS: ${{ vars.NEXT_PUBLIC_GROUPS }}
           APP_CLIENT_SECRET: ${{ secrets.APP_CLIENT_SECRET }}
           APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
-      - name: Upload artifact
+      - name: github-pages
         uses: actions/upload-artifact@v4
         with:
           path: ./.next
           if-no-files-found: 'warn'
+          
   # Deployment job
   deploy:
     environment:
