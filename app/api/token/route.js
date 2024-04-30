@@ -2,8 +2,8 @@ import { NextResponse } from "next/server"
 export const dynamic = "force-dynamic"
 
 export async function GET(){
-
-  const res = await fetch("https://accounts.spotify.com/api/token", {
+  const link = process.env.NEXT_PUBLIC_TOKEN_URL
+  const res = await fetch(link, {
     method:"POST",
     headers:{ 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
