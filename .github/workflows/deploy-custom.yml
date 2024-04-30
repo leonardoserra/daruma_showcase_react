@@ -87,7 +87,7 @@ jobs:
           APP_CLIENT_ID: ${{ secrets.APP_CLIENT_ID }}
       - name: upload artifact
         id: github-pages
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: github-pages
           path: ./.next
