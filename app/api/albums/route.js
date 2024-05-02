@@ -18,7 +18,7 @@ export async function GET(){
   })
 
     const albums_data = await res.json()
-    const albums = await albums_data.items
+    const albums = await albums_data.items 
 
     return NextResponse.json(albums, {status:200})
 }
