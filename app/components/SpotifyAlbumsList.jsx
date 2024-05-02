@@ -6,9 +6,11 @@ import LoadingAlbumCard from '@/app/components/LoadingAlbumCard'
 //GSAP
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Draggable } from 'gsap/Draggable';
-gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable) 
+import  ScrollTrigger  from 'gsap/ScrollTrigger';
+import  Draggable  from 'gsap/Draggable';
+gsap.registerPlugin(useGSAP) 
+gsap.registerPlugin(ScrollTrigger) 
+gsap.registerPlugin(Draggable) 
 
 export const dynamic = 'force-dynamic'
 
@@ -64,8 +66,6 @@ export default function SpotifyAlbumsList(){
   })
   
   return (
-    
-   
     <section id="album-list-container" className="horizontal-scroll">
       
       <div id="draggable-album-list" className=" wrapper h-[400px] w-[1200rem]">

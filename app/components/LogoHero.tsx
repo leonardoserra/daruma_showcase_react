@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import Logo from '@/public/big_logo_hero.png'
 
@@ -8,7 +9,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 export default function LogoHero() {
-  
+  const linkSpotify = process.env.NEXT_PUBLIC_SPOTIFY_URL
   useGSAP(() => {
     const tl = gsap.timeline()
     tl.to(".logo-container", {y: -80,  ease: "bounce.in", duration:3});
@@ -34,7 +35,7 @@ export default function LogoHero() {
   return (
     <section id="logo-section" className="mt-32 mb-40 m-auto">
       <div className="m-auto w-[700px] h-[700px] logo-container">
-        <a href="https://open.spotify.com/artist/6zUJZaqND4ZduOsIXRH8Sb" target="_blank" rel="noopener noreferrer">
+        <a href={linkSpotify} target="_blank" rel="noopener noreferrer">
           <Image
             id="logo-image"
             alt="Logo Hero"

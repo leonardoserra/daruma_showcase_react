@@ -1,6 +1,6 @@
 import { Reenie_Beanie, Rubik_Bubbles } from "next/font/google";
-const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight: "400" , display:"swap"});
-const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
+const reenie_beanie = Reenie_Beanie({ subsets: ["latin"], weight: "400" , display: "swap"});
+const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display: "swap" });
 
 export default function Header() {
   return (
