@@ -35,7 +35,7 @@
     "app/components/SpotifyAlbumsList.jsx",
     "app/components/ImagesList.jsx",
     "dist/types/**/*.ts"
-  ],
+, "app/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
