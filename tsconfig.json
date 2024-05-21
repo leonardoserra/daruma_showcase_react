@@ -33,8 +33,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/SpotifyAlbumsList.jsx",
-    "app/components/ImagesList.jsx"
-, "app/page.jsx"  ],
+    "app/components/ImagesList.jsx",
+    "app/page.jsx",
+    "docs/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
