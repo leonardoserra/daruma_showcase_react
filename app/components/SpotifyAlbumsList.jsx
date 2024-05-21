@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP)
 gsap.registerPlugin(ScrollTrigger) 
 gsap.registerPlugin(Draggable) 
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
 
 export default function SpotifyAlbumsList(){
   const [albums, setAlbums] = useState(null)

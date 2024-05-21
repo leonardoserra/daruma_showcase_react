@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AudioPlayer from "./components/AudioPlayer";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
 const ruluko = Ruluko({subsets: ["latin"], weight: "400", display:"swap"});
 //to use the font class  className={rubik_bubbles.className}
 
