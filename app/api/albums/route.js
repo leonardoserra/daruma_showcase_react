@@ -6,13 +6,13 @@ export async function GET(){
   const resToken = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/token")
   const token_data = await resToken.json()
   const token = await token_data.access_token
-
+  const spotifyArtistAPI = process.env.NEXT_PUBLIC_SPOTIFY_ARTIST_API
   const id = process.env.NEXT_PUBLIC_ARTIST_ID
   const offset = process.env.NEXT_PUBLIC_OFFSET
   const limit = process.env.NEXT_PUBLIC_LIMIT
   const groups = process.env.NEXT_PUBLIC_GROUPS
 
-  const res = await fetch(`https://api.spotify.com/v1/artists/${id}/albums?${groups}&${limit}&${offset}`,{
+  const res = await fetch(`${spotifyArtistAPI}${id}/albums?${groups}&${limit}&${offset}`,{
     method:"GET",  
     headers: {'Authorization': `Bearer ${token}`}
   })
