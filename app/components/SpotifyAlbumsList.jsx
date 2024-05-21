@@ -16,62 +16,64 @@ export const dynamic = 'force-dynamic'
 export default function SpotifyAlbumsList(){
   
   const [albums, setAlbums] = useState(null)
-  useEffect(()=>{
+  // useEffect(()=>{
+    
+  // }, [])
+
+  useIsomorphicLayoutEffect(() => {
+
     const base_url = process.env.NEXT_PUBLIC_BASE_URL
     fetch(`${base_url}/api/albums`)
       .then((res) => res.json())
       .then((data) => {
         setAlbums(data)
       })
-  }, [])
 
-  useIsomorphicLayoutEffect(() => {
+    gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
 
-      gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
+    const ctx = gsap.context(() => {
 
-      const ctx = gsap.context(() => {
-
-        gsap.config({
-          nullTargetWarn: false,
+      gsap.config({
+        nullTargetWarn: false,
+      })
+    
+      const cards = document.querySelectorAll('.album-card')
+    
+      cards.forEach((card, index)=>{
+        gsap.to(card, {
+          autoAlpha: 1,
+          y:0,
+          delay: index - (0.66 * index),
+          scrollTrigger:{
+            trigger:"#album-list-container",
+          }
         })
-      
-        const cards = document.querySelectorAll('.album-card')
-      
-        cards.forEach((card, index)=>{
-          gsap.to(card, {
-            autoAlpha: 1,
-            y:0,
-            delay: index - (0.66 * index),
-            scrollTrigger:{
-              trigger:"#album-list-container",
-            }
+    
+        card.addEventListener('mouseover', function(){
+          gsap.to(this, {
+            duration:0.2,
+            rotate:4,
+            scale:1.1
           })
-      
-          card.addEventListener('mouseover', function(){
-            gsap.to(this, {
-              duration:0.2,
-              rotate:4,
-              scale:1.1
-            })
-          })
-      
-          card.addEventListener('mouseout', function(){
-            gsap.to(this, {
-              duration:0.4,
-              rotate:0,
-              scale:1
-            })
-          })
-      
         })
-        
-        Draggable.create("#draggable-album-list", {
-          type: "x",
-          bounds: "#album-list-container",
-        });
-
+    
+        card.addEventListener('mouseout', function(){
+          gsap.to(this, {
+            duration:0.4,
+            rotate:0,
+            scale:1
+          })
+        })
+    
+      })
+      
+      Draggable.create("#draggable-album-list", {
+        type: "x",
+        bounds: "#album-list-container",
       });
-      return () => ctx.revert();
+
+    });
+    return () => ctx.revert();
   },[albums])
 
 
