@@ -1,16 +1,16 @@
 import dynamic from 'next/dynamic'
  
 // Client Components:
-const LogoHero = dynamic(() => import('./components/LogoHero'))
-const ContentImageSection = dynamic(() => import('./components/ContentImageSection'))
-const ImageContentSection = dynamic(() => import('./components/ImageContentSection'))
-const ImagesList = dynamic(() => import('./components/ImagesList'))
+// const LogoHero = dynamic(() => import('./components/LogoHero'))
+// const ContentImageSection = dynamic(() => import('./components/ContentImageSection'))
+// const ImageContentSection = dynamic(() => import('./components/ImageContentSection'))
+// const ImagesList = dynamic(() => import('./components/ImagesList'))
 // const SpotifyAlbumsList = dynamic(() => import('./components/SpotifyAlbumsList'))
 
-// import LogoHero from "./components/LogoHero";
-// import ContentImageSection from "./components/ContentImageSection";
-// import ImageContentSection from "./components/ImageContentSection";
-// import ImagesList from "./components/ImagesList";
+import LogoHero from "./components/LogoHero";
+import ContentImageSection from "./components/ContentImageSection";
+import ImageContentSection from "./components/ImageContentSection";
+import ImagesList from "./components/ImagesList";
 
 import SpotifyAlbumsList from "./components/SpotifyAlbumsList";
 export default function Home() {

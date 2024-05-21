@@ -1,23 +1,22 @@
 "use client"
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import LoadingAlbumCard from '@/app/components/LoadingAlbumCard'
+import { useIsomorphicLayoutEffect } from '../utils/isomorphicEffect.js' 
 //GSAP
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react';
-import  ScrollTrigger  from 'gsap/ScrollTrigger';
-import  Draggable  from 'gsap/Draggable';
-gsap.registerPlugin(useGSAP) 
-gsap.registerPlugin(ScrollTrigger) 
-gsap.registerPlugin(Draggable) 
+import { ScrollTrigger }  from 'gsap/ScrollTrigger';
+import { Draggable }  from 'gsap/Draggable';
 
-export const dynamic = 'force-static'
+
+export const dynamic = 'force-dynamic'
 
 export default function SpotifyAlbumsList(){
-  const [albums, setAlbums] = useState(null)
   
-  useEffect(() => {
+  const [albums, setAlbums] = useState(null)
+  useEffect(()=>{
     const base_url = process.env.NEXT_PUBLIC_BASE_URL
     fetch(`${base_url}/api/albums`)
       .then((res) => res.json())
@@ -26,44 +25,56 @@ export default function SpotifyAlbumsList(){
       })
   }, [])
 
-  gsap.config({
-    nullTargetWarn: false,
-  })
+  useIsomorphicLayoutEffect(() => {
 
-  Draggable.create("#draggable-album-list", {
-    type: "x",
-    bounds: "#album-list-container",
-  });
+      gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
 
-  const cards = document.querySelectorAll('.album-card')
+      const ctx = gsap.context(() => {
 
-  cards.forEach((card, index)=>{
-    gsap.to(card, {
-      autoAlpha: 1,
-      y:0,
-      delay: index - (0.66 * index),
-      scrollTrigger:{
-        trigger:"#album-list-container",
-      }
-    })
+        gsap.config({
+          nullTargetWarn: false,
+        })
+      
+        const cards = document.querySelectorAll('.album-card')
+      
+        cards.forEach((card, index)=>{
+          gsap.to(card, {
+            autoAlpha: 1,
+            y:0,
+            delay: index - (0.66 * index),
+            scrollTrigger:{
+              trigger:"#album-list-container",
+            }
+          })
+      
+          card.addEventListener('mouseover', function(){
+            gsap.to(this, {
+              duration:0.2,
+              rotate:4,
+              scale:1.1
+            })
+          })
+      
+          card.addEventListener('mouseout', function(){
+            gsap.to(this, {
+              duration:0.4,
+              rotate:0,
+              scale:1
+            })
+          })
+      
+        })
+        
+        Draggable.create("#draggable-album-list", {
+          type: "x",
+          bounds: "#album-list-container",
+        });
 
-    card.addEventListener('mouseover', function(){
-      gsap.to(this, {
-        duration:0.2,
-        rotate:4,
-        scale:1.1
-      })
-    })
+      });
+      return () => ctx.revert();
+  },[albums])
 
-    card.addEventListener('mouseout', function(){
-      gsap.to(this, {
-        duration:0.4,
-        rotate:0,
-        scale:1
-      })
-    })
 
-  })
   
   return (
     <section id="album-list-container" className="horizontal-scroll">
