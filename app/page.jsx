@@ -13,6 +13,22 @@ import ImageContentSection from "./components/ImageContentSection";
 import ImagesList from "./components/ImagesList";
 
 import SpotifyAlbumsList from "./components/SpotifyAlbumsList";
+
+export const metadata = {
+  generator: 'Next.js',
+  applicationName: 'Daruma | Beatmaker',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Next.js', 'React', 'JavaScript', 'Daruma', 'Beatmaker', 'Music'],
+  authors: [{ name: 'Leonardo Serra' }],
+  creator: 'Leonardo Serra',
+  publisher: 'github',
+  formatDetection: {
+    email: true,
+    address: false,
+    telephone: false,
+  },
+}
+
 export default function Home() {
   return (
     <main>
