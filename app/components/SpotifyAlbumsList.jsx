@@ -85,7 +85,7 @@ export default function SpotifyAlbumsList(){
                         :<Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[2].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[2].url} alt={album.name} width={400} height={400} quality={100}/>
 
                     } */}
-              </a>
+                  </a>
                 </div>
               </Suspense>
             )}
