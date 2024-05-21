@@ -74,7 +74,7 @@ export default function SpotifyAlbumsList(){
 
     });
     return () => ctx.revert();
-  },[albums])
+  },[])
 
 
   
