@@ -48,7 +48,7 @@ export default function RootLayout({
         <ContentImageSection/>  
         <ImagesList/>
         <ImageContentSection/> 
-        {/* {children} */}
+        {children}
         <SpotifyAlbumsList/>
         <Footer/>
         <AudioPlayer/>

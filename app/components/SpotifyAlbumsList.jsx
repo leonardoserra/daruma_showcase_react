@@ -1,9 +1,7 @@
 "use client"
 
-import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import LoadingAlbumCard from '@/app/components/LoadingAlbumCard'
-import { useIsomorphicLayoutEffect } from '../utils/isomorphicEffect.js' 
 //GSAP
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react';
@@ -16,67 +14,57 @@ export const dynamic = 'force-dynamic'
 export default function SpotifyAlbumsList(){
   
   const [albums, setAlbums] = useState(null)
-  // useEffect(()=>{
-    
-  // }, [])
 
-  useIsomorphicLayoutEffect(() => {
+    useEffect(()=>{
 
-    const base_url = process.env.NEXT_PUBLIC_BASE_URL
-    fetch(`${base_url}/api/albums`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAlbums(data)
-      })
-
-    gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-
-      gsap.config({
-        nullTargetWarn: false,
-      })
-    
-      const cards = document.querySelectorAll('.album-card')
-    
-      cards.forEach((card, index)=>{
-        gsap.to(card, {
-          autoAlpha: 1,
-          y:0,
-          delay: index - (0.66 * index),
-          scrollTrigger:{
-            trigger:"#album-list-container",
-          }
+      const base_url = process.env.NEXT_PUBLIC_BASE_URL
+      fetch(`${base_url}/api/albums`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAlbums(data)
+        }).then(()=>{
+            gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
+            gsap.config({
+              nullTargetWarn: false,
+            })
+          
+            const cards = document.querySelectorAll('.album-card')
+          
+            cards.forEach((card, index)=>{
+              gsap.to(card, {
+                autoAlpha: 1,
+                y:0,
+                delay: index - (0.66 * index),
+                scrollTrigger:{
+                  trigger:"#album-list-container",
+                }
+              })
+          
+              card.addEventListener('mouseover', function(){
+                gsap.to(this, {
+                  duration:0.2,
+                  rotate:4,
+                  scale:1.1
+                })
+              })
+          
+              card.addEventListener('mouseout', function(){
+                gsap.to(this, {
+                  duration:0.4,
+                  rotate:0,
+                  scale:1
+                })
+              })
+          
+            })
+            
+            Draggable.create("#draggable-album-list", {
+              type: "x",
+              bounds: "#album-list-container",
+            });  
         })
-    
-        card.addEventListener('mouseover', function(){
-          gsap.to(this, {
-            duration:0.2,
-            rotate:4,
-            scale:1.1
-          })
-        })
-    
-        card.addEventListener('mouseout', function(){
-          gsap.to(this, {
-            duration:0.4,
-            rotate:0,
-            scale:1
-          })
-        })
-    
-      })
-      
-      Draggable.create("#draggable-album-list", {
-        type: "x",
-        bounds: "#album-list-container",
-      });
 
-    });
-    return () => ctx.revert();
-  },[])
-
-
+    }, [])
   
   return (
     <section id="album-list-container" className="horizontal-scroll">
@@ -86,21 +74,22 @@ export default function SpotifyAlbumsList(){
           {/* Album Cards */}
           {albums && albums.map((album) => {
             return (
-              <Suspense key={album.name+'-suspense'} fallback={<LoadingAlbumCard album={album}/>}>
-                <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
-                  <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
-                   <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[1].url}?w=400&q=100`} className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
-                    
-                    {/* {new URL(album.images[0].url) == true
-                      ? <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[0].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[0].url} alt={album.name} width={400} height={400} quality={100}/>
-                      : new URL(album.images[1].url) == true
-                        ?<Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[1].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
-                        :<Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[2].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[2].url} alt={album.name} width={400} height={400} quality={100}/>
-
-                    } */}
-                  </a>
-                </div>
-              </Suspense>
+              <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
+                <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
+                  {/* <Image 
+                    placeholder='blur' 
+                    blurDataURL='data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' 
+                    src={album.images[1].url} 
+                    loader={()=> `${album.images[1].url}?w=400&q=100`} 
+                    className="w-[400px] h-[400px] rounded-lg" 
+                    alt={album.name} 
+                    width={400} 
+                    height={400} 
+                    quality={100}
+                  /> */}
+                  <img className='w-[400px] h-[400px] rounded-lg' src={album.images[0].url} alt="" />
+                </a>
+              </div>
             )}
           )}
           {/* banner */}
