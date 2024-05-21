@@ -76,7 +76,7 @@ export default function SpotifyAlbumsList(){
               <Suspense key={album.name+'-suspense'} fallback={<LoadingAlbumCard album={album}/>}>
                 <div className="album-card w-[400px] h-[400px] mx-3 z-10" key={album.name}>
                   <a className="w-[400px] h-[900px]" href={album.external_urls.spotify ?? '#'} target="_blank">
-                   <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[1].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
+                   <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[1].url}?w=400&q=100`} className="w-[400px] h-[400px] rounded-lg" src={album.images[1].url} alt={album.name} width={400} height={400} quality={100}/>
                     
                     {/* {new URL(album.images[0].url) == true
                       ? <Image placeholder='blur' blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="' loader={()=> `${album.images[0].url}?w=400&q=75`} className="w-[400px] h-[400px] rounded-lg" src={album.images[0].url} alt={album.name} width={400} height={400} quality={100}/>
