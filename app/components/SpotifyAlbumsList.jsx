@@ -16,55 +16,53 @@ export default function SpotifyAlbumsList(){
   const [albums, setAlbums] = useState(null)
 
     useEffect(()=>{
-
       const base_url = process.env.NEXT_PUBLIC_BASE_URL
       fetch(`${base_url}/api/albums`)
-        .then((res) => res.json())
-        .then((data) => {
-          setAlbums(data)
-        }).then(()=>{
-            gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
-            gsap.config({
-              nullTargetWarn: false,
-            })
-          
-            const cards = document.querySelectorAll('.album-card')
-          
-            cards.forEach((card, index)=>{
-              gsap.to(card, {
-                autoAlpha: 1,
-                y:0,
-                delay: index - (0.66 * index),
-                scrollTrigger:{
-                  trigger:"#album-list-container",
-                }
-              })
-          
-              card.addEventListener('mouseover', function(){
-                gsap.to(this, {
-                  duration:0.2,
-                  rotate:4,
-                  scale:1.1
-                })
-              })
-          
-              card.addEventListener('mouseout', function(){
-                gsap.to(this, {
-                  duration:0.4,
-                  rotate:0,
-                  scale:1
-                })
-              })
-          
-            })
-            
-            Draggable.create("#draggable-album-list", {
-              type: "x",
-              bounds: "#album-list-container",
-            });  
-        })
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbums(data)
+      })
 
     }, [])
+    gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
+    gsap.config({
+      nullTargetWarn: false,
+    })
+    
+    const cards = document.querySelectorAll('.album-card')
+  
+    cards.forEach((card, index)=>{
+      gsap.to(card, {
+        autoAlpha: 1,
+        y:0,
+        delay: index - (0.66 * index),
+        scrollTrigger:{
+          trigger:"#album-list-container",
+        }
+      })
+  
+      card.addEventListener('mouseover', function(){
+        gsap.to(this, {
+          duration:0.2,
+          rotate:4,
+          scale:1.1
+        })
+      })
+  
+      card.addEventListener('mouseout', function(){
+        gsap.to(this, {
+          duration:0.4,
+          rotate:0,
+          scale:1
+        })
+      })
+  
+    })
+    
+    Draggable.create("#draggable-album-list", {
+      type: "x",
+      bounds: "#album-list-container",
+    });
   
   return (
     <section id="album-list-container" className="horizontal-scroll">
