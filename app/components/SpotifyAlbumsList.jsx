@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
+
 //GSAP
 import gsap from "gsap";
 import { useGSAP } from '@gsap/react';
@@ -15,21 +16,24 @@ export default function SpotifyAlbumsList(){
   
   const [albums, setAlbums] = useState(null)
 
-    useEffect(()=>{
-      const base_url = process.env.NEXT_PUBLIC_BASE_URL
-      fetch(`${base_url}/api/albums`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAlbums(data)
-      })
+  useEffect(()=>{
 
-    }, [])
-    gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
-    gsap.config({
-      nullTargetWarn: false,
+    const base_url = process.env.NEXT_PUBLIC_BASE_URL
+    fetch(`${base_url}/api/albums`)
+    .then((res) => res.json())
+    .then((data) => {
+      setAlbums(data)
     })
-    
-    const cards = document.querySelectorAll('.album-card')
+
+  }, [])
+
+
+  gsap.registerPlugin(useGSAP, Draggable, ScrollTrigger);
+  gsap.config({
+    nullTargetWarn: false,
+  })
+
+    const cards =  document.querySelectorAll('.album-card')
   
     cards.forEach((card, index)=>{
       gsap.to(card, {

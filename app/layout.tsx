@@ -12,7 +12,7 @@ import ImageContentSection from "./components/ImageContentSection";
 import ImagesList from "./components/ImagesList";
 import SpotifyAlbumsList from "./components/SpotifyAlbumsList";
 
-// export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic'
 
 const ruluko = Ruluko({subsets: ["latin"], weight: "400", display:"swap", preload: true});
 

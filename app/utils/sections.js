@@ -1,4 +1,4 @@
-export default {
+export const sections =  {
   "section_one":{
     "title":"Overview",
     "description":"Daruma, is a dynamic musician and producer hailing from Bologna, Italy. Specializing in the MPC and SP-404 samplers, he has made a name for himself through his intricate finger drumming, live performances, busking, and street art. His sound is an eclectic blend, ranging from gritty, dusty boom-bap to trip-hop and laid-back, chill beats, ensuring each track is a unique auditory experience. Daruma’s innovative approach and commitment to his craft have garnered a significant following and respect within the beatmaking community. He actively shares his work on platforms like YouTube and Bandcamp, and his performances often highlight his ability to merge different musical styles seamlessly, making his sound both unpredictable and captivating"

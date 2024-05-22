@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ArticleImage from "@/public/section_2_img.png";
 import { Rubik_Bubbles } from "next/font/google";
-import sections from "@/app/utils/sections";
+import { sections } from "@/app/utils/sections";
 const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
 
 //GSAP

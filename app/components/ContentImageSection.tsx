@@ -6,7 +6,7 @@ import { Rubik_Bubbles } from "next/font/google";
 import gsap from 'gsap'
 import {useGSAP} from '@gsap/react'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import sections from "@/app/utils/sections";
+import { sections } from "@/app/utils/sections";
 gsap.registerPlugin(ScrollTrigger, useGSAP) 
 
 const rubik_bubbles = Rubik_Bubbles({ subsets: ["latin"], weight: "400", display:"swap" });
